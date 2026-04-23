@@ -1,0 +1,22 @@
+.blog-card-author {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .author-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .author-role {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+}
