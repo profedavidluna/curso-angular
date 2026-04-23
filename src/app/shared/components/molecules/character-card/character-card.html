@@ -1,0 +1,23 @@
+<article class="character-card">
+  <img
+    [src]="character().image"
+    [alt]="character().name"
+    class="character-card__image"
+    loading="lazy"
+  />
+  <div class="character-card__body">
+    <h3 class="character-card__name">{{ character().name }}</h3>
+    <div class="character-card__meta">
+      <app-badge [text]="character().status" [variant]="statusVariant()" />
+      <span class="character-card__species">{{ character().species }}</span>
+    </div>
+    <p class="character-card__location">
+      <span class="character-card__label">Ubicación:</span>
+      {{ character().location.name }}
+    </p>
+    <p class="character-card__gender">
+      <span class="character-card__label">Género:</span>
+      {{ character().gender }}
+    </p>
+  </div>
+</article>

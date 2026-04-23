@@ -1,0 +1,29 @@
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+
+  &.alive {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+
+  &.dead {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+
+  &.unknown {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+
+  &.episode {
+    background-color: #dbeafe;
+    color: #1e40af;
+  }
+}

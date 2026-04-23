@@ -1,0 +1,16 @@
+<article class="episode-card">
+  <div class="episode-card__header">
+    <app-badge [text]="episode().episode" variant="episode" />
+  </div>
+  <div class="episode-card__body">
+    <h3 class="episode-card__name">{{ episode().name }}</h3>
+    <p class="episode-card__date">
+      <span class="episode-card__label">Emitido:</span>
+      {{ episode().air_date }}
+    </p>
+    <p class="episode-card__characters">
+      <span class="episode-card__label">Personajes:</span>
+      {{ characterCount() }}
+    </p>
+  </div>
+</article>

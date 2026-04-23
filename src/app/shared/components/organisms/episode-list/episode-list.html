@@ -1,0 +1,24 @@
+<section class="episode-list">
+  <div class="episode-list__header">
+    <h2 class="episode-list__title">Episodios</h2>
+    <span class="episode-list__count">
+      {{ episodeService.total() }} episodios
+    </span>
+  </div>
+
+  @if (episodeService.loading()) {
+    <app-loading-spinner />
+  }
+
+  @if (episodeService.error()) {
+    <p class="episode-list__error">{{ episodeService.error() }}</p>
+  }
+
+  @if (!episodeService.loading() && !episodeService.error()) {
+    <div class="episode-list__grid">
+      @for (episode of episodeService.episodes(); track episode.id) {
+        <app-episode-card [episode]="episode" />
+      }
+    </div>
+  }
+</section>
