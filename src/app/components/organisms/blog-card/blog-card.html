@@ -1,0 +1,13 @@
+<article class="blog-card">
+  <img class="blog-card__image" [src]="post().image" [alt]="post().title" />
+  <div class="blog-card__body">
+    <app-blog-card-meta [date]="post().date" [category]="post().category" />
+    <h3 class="blog-card__title">{{ post().title }}</h3>
+    <p class="blog-card__excerpt">{{ post().excerpt }}</p>
+    <app-blog-card-author
+      [name]="post().author.name"
+      [role]="post().author.role"
+      [avatar]="post().author.avatar"
+    />
+  </div>
+</article>

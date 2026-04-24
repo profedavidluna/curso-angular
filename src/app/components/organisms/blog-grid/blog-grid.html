@@ -1,0 +1,5 @@
+<div class="blog-grid">
+  @for (post of posts(); track post.id) {
+    <app-blog-card [post]="post" />
+  }
+</div>
