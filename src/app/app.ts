@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { BlogSectionComponent } from './components/templates/blog-section/blog-section';
 import { BlogPost } from './models/blog-post.model';
+import { PostService } from './services/post.service';
 
 @Component({
   selector: 'app-root',
@@ -8,63 +9,14 @@ import { BlogPost } from './models/blog-post.model';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  readonly blogPosts: BlogPost[] = [
-    {
-      id: 1,
-      image: 'https://placehold.co/300x200/cccccc/555555?text=Blog+1',
-      date: '12.03.2022',
-      category: 'Busiene',
-      title: "Camping is nature's way of promoting the motel business.",
-      excerpt:
-        'When you are alone for days or week at a time, you eventually become...',
-      author: {
-        name: 'Jennifer Freeman',
-        role: 'Charming Blogger',
-        avatar: 'https://placehold.co/40x40/aaaaaa/ffffff?text=JF',
-      },
-    },
-    {
-      id: 2,
-      image: 'https://placehold.co/300x200/cccccc/555555?text=Blog+2',
-      date: '12.03.2022',
-      category: 'Blogger',
-      title: 'Scientific articles are written in the company.',
-      excerpt:
-        'Last year I wrote about why booking too far in advance can be...',
-      author: {
-        name: 'Jennifer Freeman',
-        role: 'Charming Blogger',
-        avatar: 'https://placehold.co/40x40/aaaaaa/ffffff?text=JF',
-      },
-    },
-    {
-      id: 3,
-      image: 'https://placehold.co/300x200/cccccc/555555?text=Blog+3',
-      date: '12.03.2022',
-      category: 'Blogger',
-      title: "This computer belongs to the company, so it's ours",
-      excerpt:
-        'Just the other day I happened to wake up early, that is unusual for...',
-      author: {
-        name: 'Jennifer Freeman',
-        role: 'Charming Blogger',
-        avatar: 'https://placehold.co/40x40/aaaaaa/ffffff?text=JF',
-      },
-    },
-    {
-      id: 4,
-      image: 'https://placehold.co/300x200/cccccc/555555?text=Blog+4',
-      date: '12.03.2022',
-      category: 'Blogger',
-      title: 'I work in sales for a large telecommunications company.',
-      excerpt:
-        'When you are alone for days or week at a time, you eventually become...',
-      author: {
-        name: 'Jennifer Freeman',
-        role: 'Charming Blogger',
-        avatar: 'https://placehold.co/40x40/aaaaaa/ffffff?text=JF',
-      },
-    },
-  ];
+export class App implements OnInit {
+  readonly blogPosts = signal<BlogPost[]>([]);
+
+  constructor(private postService: PostService) {}
+
+  ngOnInit(): void {
+    this.postService.getPosts().subscribe((posts) => {
+      this.blogPosts.set(posts);
+    });
+  }
 }
